@@ -1,4 +1,4 @@
 # SQL_Lectures
-Repository for class of 2022 Fall SQL Lecture files. 
+Repository for SQL class I taught in 2022 Fall.
 
-Includes lecture videos, classwork and homework
+Includes lecture videos, classwork and homework, mainly in Georgian Language.
