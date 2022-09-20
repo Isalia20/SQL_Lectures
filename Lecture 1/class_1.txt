@@ -1,0 +1,83 @@
+SELECT EMPLOYEE_ID AS EMP_ID, 
+       FIRST_NAME AS FIRSTNAME, 
+       LAST_NAME, HIRE_DATE, 
+       500 * 3 - 200 AS KALKULACIA 
+       FROM EMPLOYEES;
+
+SELECT 500 * 3 - 200 FROM DUAL;
+
+
+-- DESCENDING KLEBADOBISTVIS
+-- ASC ZRDADOBISTVIS
+SELECT * FROM EMPLOYEES 
+ORDER BY SALARY DESC, MANAGER_ID DESC;
+
+
+/* BRTB
+RTBRTB
+RT
+BRT
+B
+RT
+BRTHYNTRFDEFVWSERTNYHTNFGBFG
+RTB
+RT
+BRT
+BRTBRT
+BR
+TB */
+
+SELECT EMPLOYEE_ID, SALARY FROM EMPLOYEES
+ORDER BY SALARY * 100;
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT DISTINCT EMPLOYEE_ID, SALARY, LAST_NAME FROM EMPLOYEES;
+
+------------------------------------------------------------------------------------------------------
+SELECT * FROM EMPLOYEES
+WHERE SALARY > 5000
+ORDER BY SALARY DESC;
+
+SELECT * FROM EMPLOYEES
+WHERE SALARY >= 5000
+ORDER BY SALARY DESC;
+
+-- < <= 
+SELECT * FROM EMPLOYEES 
+WHERE FIRST_NAME = 'Steven';
+
+SELECT * FROM EMPLOYEES
+WHERE HIRE_DATE >= '1JAN2006';
+
+-- NULL CHANAWEREBI
+SELECT COMMISSION_PCT + 500 FROM EMPLOYEES;
+-- CXRILZE SAXELIS DARQMEVA 
+SELECT EMPLOYEE_ID EMP_COL FROM EMPLOYEES EMP;
+SELECT EMPLOYEE_ID AS EMP_COL FROM EMPLOYEES EMP;
+
+
+select salary, salary * 20 as axali, salary * 20 - salary as raghaca from employees;
+
+select * from employees
+WHERE hire_date > '7JUL2002'
+
+
+
+--------------
+--1. gamoitanet yvela veli tanamshromlebis cxrilidan
+SELECT * FROM EMPLOYEES;
+--2. gamoitanet yvela veli tanamshromlebis cxrilidan da daalaget 
+--xelfasis zrdadobis da manager_id-is klebadobis mixedvit
+SELECT * FROM EMPLOYEES
+ORDER BY SALARY, MANAGER_ID DESC
+--3. gamotvalet tanamshromlebis axali xelfasi tu mat 10% unda movumatot(calke svetad gamoitanet),
+-- datvalet sxvaoba gazrdil xelfassa da arsebul xelfasebs shoris(calke svetad gamoitanet)
+SELECT SALARY, SALARY * 1.1, SALARY * 1.1 - SALARY, SALARY * 0.1 FROM EMPLOYEES;
+--4. gamoitanet tanamsrhomlebi romeltac hqviat saxeli Neena da aqvt xelfasi 5000ze.
+SELECT * FROM EMPLOYEES 
+WHERE FIRST_NAME = 'Neena' AND 
+SALARY > 5000;
+--5. gamoitanet iseti tanamshromlebi romelta ayvanis tarighi aris 2002 wlis 7 ivlisze meti.
+SELECT * FROM EMPLOYEES 
+WHERE HIRE_DATE > '7JUL2002';
+
