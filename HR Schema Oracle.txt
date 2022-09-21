@@ -1,3 +1,10 @@
+--DROP TABLE regions;
+--DROP TABLE locations;
+--DROP TABLE employees;
+--DROP TABLE countries;
+--DROP TABLE job_history;
+--DROP TABLE jobs;
+
 CREATE TABLE regions
     ( region_id      NUMBER 
        CONSTRAINT  region_id_nn NOT NULL 
