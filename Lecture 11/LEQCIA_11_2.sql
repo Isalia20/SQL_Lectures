@@ -1,0 +1,132 @@
+CREATE TABLE EMPLOYEES_NEW AS 
+SELECT * FROM EMPLOYEES 
+
+BEGIN 
+  MY_FIRST_PROCEDURE(P_EMPLOYEE_ID => 260,P_FIRST_NAME => 'Liza',
+                     P_LAST_NAME => 'Khelaia',P_EMAIL => 'elizkhel@gmail.com',
+                     P_PHONE_NUMBER => '599997737',P_HIRE_DATE => '18NOV2022',
+                     P_JOB_ID => 'AD_VP',P_SALARY => 10,P_COMMISSION_PCT => NULL,
+                     P_MANAGER_ID => 104,P_DEPARTMENT_ID => 90);
+END;
+
+SELECT * FROM EMPLOYEES
+
+ROLLBACK;
+
+
+---VARIABLES
+DECLARE 
+  V_SOME_VAR_1 NUMBER := 10;
+  V_SOME_VAR_2 NUMBER := 15;
+  V_SOME_VAR_3 NUMBER;
+  
+BEGIN 
+  V_SOME_VAR_3 := 100;  
+
+  V_SOME_VAR_3 := V_SOME_VAR_1 + V_SOME_VAR_2;
+  DBMS_OUTPUT.PUT_LINE('Value of v_some_var_3 is ' || V_SOME_VAR_3);
+END;
+
+
+
+DECLARE
+V_EMPLOYEE_ID NUMBER;
+V_DEPARTMENT_ID NUMBER;
+PI CONSTANT NUMBER := 3.141592654;
+
+BEGIN 
+  SELECT EMPLOYEE_ID, DEPARTMENT_ID
+  INTO V_EMPLOYEE_ID, V_DEPARTMENT_ID
+  FROM EMPLOYEES
+  WHERE EMPLOYEE_ID = 100;
+  
+  DBMS_OUTPUT.PUT_LINE('Employee_ID: '|| V_EMPLOYEE_ID || '
+' || 'Department_ID: '|| V_DEPARTMENT_ID || '
+PI: ' || PI);
+END;
+  
+
+BEGIN 
+  << OUTER_LOOP >>
+  FOR I IN 1..3 LOOP
+      << INNER_LOOP >>
+      FOR J IN 1..5 LOOP    
+          DBMS_OUTPUT.PUT_LINE('Number: '|| i || ' and Number: '|| j);
+      IF I > 1 THEN 
+        EXIT OUTER_LOOP; -- WITHOUT NAME AND WITH NAME
+      END IF;
+      END LOOP INNER_LOOP;
+  END LOOP OUTER_LOOP;
+END;
+
+
+BEGIN 
+  << OUTER_LOOP >>
+  FOR I IN 1..3 LOOP
+      << INNER_LOOP >>
+      FOR J IN 1..5 LOOP    
+          DBMS_OUTPUT.PUT_LINE('Number: '|| i || ' and Number: '|| j);
+      EXIT OUTER_LOOP WHEN I > 1; -- WITH OUTER LOOP AND WITH OUTER LOOP
+      END LOOP INNER_LOOP;
+  END LOOP OUTER_LOOP;
+END;
+
+--CONTINUE
+BEGIN 
+  << OUTER_LOOP >>
+  FOR I IN 1..3 LOOP
+      << INNER_LOOP >>
+      FOR J IN 1..5 LOOP    
+          DBMS_OUTPUT.PUT_LINE('Number: '|| i || ' and Number: '|| j);
+      CONTINUE OUTER_LOOP WHEN I > 1; -- WITH OUTER LOOP AND WITH OUTER LOOP
+      END LOOP INNER_LOOP;
+  END LOOP OUTER_LOOP;
+END;
+
+
+
+
+-- GO TO
+BEGIN
+  FOR I IN (
+    SELECT EMPLOYEE_ID FROM EMPLOYEES_NEW
+    WHERE EMPLOYEE_ID = 101
+    ) LOOP
+
+
+<< SECTION_1 >>
+IF I.EMPLOYEE_ID > 100 THEN 
+   GOTO SECTION_2;
+END IF;  
+
+DELETE EMPLOYEES_NEW 
+WHERE EMPLOYEE_ID = I.EMPLOYEE_ID;    
+
+<< SECTION_2 >>
+UPDATE EMPLOYEES_NEW 
+SET SALARY = SALARY * 1.5;
+
+END LOOP;
+END;
+
+
+--VARRAYS 
+DECLARE 
+   TYPE NAMESARRAY IS VARRAY(5) OF VARCHAR2(10);
+   names NAMESARRAY;
+   
+BEGIN 
+   names := namesarray('Tamuna', 'Liza', 'Irakli');  
+web
+     FOR I IN 1..names.count LOOP
+       DBMS_OUTPUT.PUT_LINE('Something: '|| names(I));
+     END LOOP;
+END;
+
+
+
+
+
+
+
+  
